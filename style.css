@@ -1,43 +1,70 @@
+/* =========================
+   Google Font
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* =========================
+   Global Styles
+========================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:'Poppins', sans-serif;
 }
 
 body{
   min-height:100vh;
-  background:linear-gradient(135deg,#153677,#4e085f);
+  background:linear-gradient(135deg,#0f172a,#1e293b,#312e81);
   display:flex;
   justify-content:center;
   align-items:center;
   padding:20px;
+  overflow-x:hidden;
 }
 
+/* =========================
+   Container
+========================= */
 .container{
   width:100%;
-  max-width:500px;
+  max-width:550px;
 }
 
+/* =========================
+   Todo Card
+========================= */
 .todo-app{
-  background:#fff;
-  padding:40px 30px 70px;
-  border-radius:20px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.2);
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+  padding:40px 30px;
+  border-radius:25px;
+  color:#fff;
+  animation:fadeIn 0.7s ease;
 }
 
+/* =========================
+   Heading
+========================= */
 .todo-app h2{
-  color:#002765;
-  margin-bottom:20px;
   text-align:center;
+  font-size:32px;
+  margin-bottom:25px;
+  font-weight:700;
+  color:#ffffff;
+  letter-spacing:1px;
 }
 
+/* =========================
+   Input Row
+========================= */
 .row{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  background:#edeef0;
-  border-radius:30px;
-  padding-left:20px;
+  gap:12px;
   margin-bottom:25px;
 }
 
@@ -45,66 +72,237 @@ input{
   flex:1;
   border:none;
   outline:none;
-  background:transparent;
-  padding:15px;
+  padding:16px 20px;
+  border-radius:50px;
+  background:rgba(255,255,255,0.15);
+  color:#fff;
   font-size:16px;
+  transition:0.3s;
+  border:1px solid transparent;
 }
 
+input::placeholder{
+  color:#d1d5db;
+}
+
+input:focus{
+  border:1px solid #8b5cf6;
+  background:rgba(255,255,255,0.2);
+  box-shadow:0 0 10px rgba(139,92,246,0.4);
+}
+
+/* =========================
+   Button
+========================= */
 button{
   border:none;
   outline:none;
-  padding:16px 40px;
-  background:#ff5945;
+  padding:16px 28px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#8b5cf6,#6366f1);
   color:#fff;
   font-size:16px;
+  font-weight:600;
   cursor:pointer;
-  border-radius:40px;
+  transition:0.3s ease;
+  box-shadow:0 5px 15px rgba(99,102,241,0.4);
+}
+
+button:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 8px 20px rgba(99,102,241,0.5);
+}
+
+/* =========================
+   Task List
+========================= */
+ul{
+  margin-top:10px;
 }
 
 ul li{
   list-style:none;
   font-size:17px;
-  padding:12px 8px 12px 50px;
-  user-select:none;
-  cursor:pointer;
+  padding:15px 50px 15px 55px;
+  margin-bottom:15px;
+  border-radius:15px;
   position:relative;
+  cursor:pointer;
+  background:rgba(255,255,255,0.1);
+  transition:0.3s;
+  word-wrap:break-word;
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
+ul li:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.15);
+}
+
+/* =========================
+   Task Icons
+========================= */
 ul li::before{
   content:'';
   position:absolute;
-  height:28px;
-  width:28px;
+  height:24px;
+  width:24px;
   border-radius:50%;
   background-image:url('https://cdn-icons-png.flaticon.com/512/1828/1828665.png');
   background-size:cover;
   background-position:center;
-  top:12px;
-  left:8px;
+  top:14px;
+  left:15px;
 }
 
+/* =========================
+   Checked Task
+========================= */
 ul li.checked{
-  color:#555;
+  color:#cbd5e1;
   text-decoration:line-through;
+  background:rgba(34,197,94,0.15);
 }
 
 ul li.checked::before{
   background-image:url('https://cdn-icons-png.flaticon.com/512/190/190411.png');
 }
 
+/* =========================
+   Delete Button
+========================= */
 ul li span{
   position:absolute;
-  right:0;
-  top:5px;
-  width:40px;
-  height:40px;
-  font-size:22px;
-  color:#555;
-  line-height:40px;
+  right:12px;
+  top:10px;
+  width:35px;
+  height:35px;
+  line-height:35px;
   text-align:center;
+  font-size:22px;
   border-radius:50%;
+  color:#fff;
+  transition:0.3s;
 }
 
 ul li span:hover{
-  background:#edeef0;
+  background:rgba(255,255,255,0.15);
+  color:#ff6b6b;
+}
+
+/* =========================
+   Scrollbar
+========================= */
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#6366f1;
+  border-radius:10px;
+}
+
+/* =========================
+   Animation
+========================= */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   Tablet Responsive
+========================= */
+@media(max-width:768px){
+
+  .todo-app{
+    padding:35px 25px;
+  }
+
+  .todo-app h2{
+    font-size:28px;
+  }
+
+  input{
+    font-size:15px;
+    padding:14px 18px;
+  }
+
+  button{
+    padding:14px 22px;
+    font-size:15px;
+  }
+
+  ul li{
+    font-size:16px;
+  }
+}
+
+/* =========================
+   Mobile Responsive
+========================= */
+@media(max-width:480px){
+
+  body{
+    align-items:flex-start;
+    padding-top:40px;
+  }
+
+  .container{
+    width:100%;
+  }
+
+  .todo-app{
+    width:100%;
+    padding:25px 18px;
+    border-radius:20px;
+  }
+
+  .todo-app h2{
+    font-size:24px;
+    margin-bottom:20px;
+  }
+
+  .row{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  input{
+    width:100%;
+    font-size:14px;
+    padding:14px 16px;
+  }
+
+  button{
+    width:100%;
+    padding:14px;
+    font-size:15px;
+  }
+
+  ul li{
+    font-size:15px;
+    padding:14px 45px 14px 50px;
+  }
+
+  ul li::before{
+    width:22px;
+    height:22px;
+    top:14px;
+    left:14px;
+  }
+
+  ul li span{
+    width:32px;
+    height:32px;
+    line-height:32px;
+    font-size:20px;
+  }
 }
